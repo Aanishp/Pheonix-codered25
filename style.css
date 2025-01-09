@@ -110,3 +110,10 @@ header {
 .carousel-caption h1 {
     color: rgb(255, 255, 255);
 }
+
+.info {
+    margin-left: 0px;
+    left: 0px;
+    display: flex;
+    background-color: rgb(23, 230, 133, 0.5);
+}
