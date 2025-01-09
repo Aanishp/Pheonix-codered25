@@ -106,3 +106,7 @@ header {
     width: 90%;
     max-width: 1200px;
 }
+
+.carousel-caption h1 {
+    color: rgb(255, 255, 255);
+}
