@@ -1,173 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Placement Aspiration Form</title>
 </head>
-
 <body>
-    <div class="tree">
-        <ul>
-            <li>
-                <a href="#">Parent</a>
-                <ul>
-                    <li>
-                        <a href="#">Child</a>
-                        <ul>
-                            <li>
-                                <a href="#">Grand Child</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">Child</a>
-                        <ul>
-                            <li><a href="#">Grand Child</a></li>
-                            <li>
-                                <a href="#">Grand Child</a>
-                                <ul>
-                                    <li>
-                                        <a href="#">Great Grand Child</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Great Grand Child</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Great Grand Child</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Grand Child</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-    </div>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-        }
+    <h1>Welcome to Phoenix - Your Personalized Placement Assistant</h1>
+    <form id="placement-form">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" required><br><br>
 
-        .tree ul {
-            padding-top: 20px;
-            position: relative;
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br><br>
 
-            transition: all 0.5s;
-            -webkit-transition: all 0.5s;
-            -moz-transition: all 0.5s;
-        }
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password" required><br><br>
 
-        .tree li {
-            float: left;
-            text-align: center;
-            list-style-type: none;
-            position: relative;
-            padding: 20px 5px 0 5px;
+        <label for="aspiration">Placement Aspiration:</label><br>
+        <select id="aspiration" name="aspiration" required>
+            <option value="web_development">Web Development</option>
+            <option value="machine_learning">Machine Learning</option>
+            <option value="software_engineering">Software Engineering</option>
+        </select><br><br>
 
-            transition: all 0.5s;
-            -webkit-transition: all 0.5s;
-            -moz-transition: all 0.5s;
-        }
+        <label for="knowledge">How much do you know about this field?</label><br>
+        <select id="knowledge" name="knowledge" required>
+            <option value="beginner">Beginner</option>
+            <option value="basics">I know the basics</option>
+            <option value="course_completed">I have done a full course</option>
+        </select><br><br>
 
+        <label for="career_goals">What are your career goals?</label><br>
+        <textarea id="career_goals" name="career_goals" rows="4" cols="50" required></textarea><br><br>
 
+        <label for="learning_style">Preferred Learning Style:</label><br>
+        <select id="learning_style" name="learning_style" required>
+            <option value="video_tutorials">Video Tutorials</option>
+            <option value="hands_on">Hands-on Projects</option>
+            <option value="reading_materials">Reading Materials</option>
+        </select><br><br>
 
-        .tree li::before,
-        .tree li::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 50%;
-            border-top: 1px solid #ccc;
-            width: 50%;
-            height: 20px;
-        }
+        <label for="time_availability">How many hours per week can you dedicate?</label><br>
+        <input type="number" id="time_availability" name="time_availability" min="1" max="40" required><br><br>
 
-        .tree li::after {
-            right: auto;
-            left: 50%;
-            border-left: 1px solid #ccc;
-        }
+        <button type="submit">Submit</button>
+    </form>
 
-        /*We need to remove left-right connectors from elements without 
-any siblings*/
-        .tree li:only-child::after,
-        .tree li:only-child::before {
-            display: none;
-        }
+    <h2 id="result"></h2>
 
+    <script>
+        document.getElementById("placement-form").addEventListener("submit", async function (e) {
+            e.preventDefault();
 
-        .tree li:only-child {
-            padding-top: 0;
-        }
+            const formData = {
+                name: document.getElementById("name").value,
+                email: document.getElementById("email").value,
+                password: document.getElementById("password").value,
+                aspiration: document.getElementById("aspiration").value,
+                knowledge: document.getElementById("knowledge").value,
+                career_goals: document.getElementById("career_goals").value,
+                learning_style: document.getElementById("learning_style").value,
+                time_availability: parseInt(document.getElementById("time_availability").value)
+            };
 
-        /*Remove left connector from first child and 
-right connector from last child*/
-        .tree li:first-child::before,
-        .tree li:last-child::after {
-            border: 0 none;
-        }
+            const response = await fetch("http://127.0.0.1:5000/evaluate", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(formData),
+            });
 
-        .tree li:last-child::before {
-            border-right: 1px solid #ccc;
-            border-radius: 0 5px 0 0;
-            -webkit-border-radius: 0 5px 0 0;
-            -moz-border-radius: 0 5px 0 0;
-        }
-
-        .tree li:first-child::after {
-            border-radius: 5px 0 0 0;
-            -webkit-border-radius: 5px 0 0 0;
-            -moz-border-radius: 5px 0 0 0;
-        }
-
-
-        .tree ul ul::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            border-left: 1px solid #ccc;
-            width: 0;
-            height: 20px;
-        }
-
-        .tree li a {
-            border: 1px solid #ccc;
-            padding: 5px 10px;
-            text-decoration: none;
-            color: #666;
-            font-family: arial, verdana, tahoma;
-            font-size: 11px;
-            display: inline-block;
-
-            border-radius: 5px;
-            -webkit-border-radius: 5px;
-            -moz-border-radius: 5px;
-
-            transition: all 0.5s;
-            -webkit-transition: all 0.5s;
-            -moz-transition: all 0.5s;
-        }
-
-
-        .tree li a:hover,
-        .tree li a:hover+ul li a {
-            background: #c8e4f8;
-            color: #000;
-            border: 1px solid #94a0b4;
-        }
-
-        .tree li a:hover+ul li::after,
-        .tree li a:hover+ul li::before,
-        .tree li a:hover+ul::before,
-        .tree li a:hover+ul ul::before {
-            border-color: #94a0b4;
-        }
-    </style>
+            const result = await response.json();
+            document.getElementById("result").innerText = Result: ${result.message};
+        });
+    </script>
 </body>
-
 </html>

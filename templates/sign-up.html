@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Placement Aspiration Form</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #004668; /* Setting the background color */
+        color: #fff; /* Adjusting text color for contrast */
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      h1 {
+        text-align: center;
+        color: #fff; /* White for good contrast */
+        margin-bottom: 20px;
+      }
+
+      form {
+        background: #fff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        max-width: 400px;
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      label {
+        font-weight: bold;
+        margin-top: 15px;
+        display: block;
+        color: #333; /* Dark text color for readability */
+      }
+
+      input,
+      select,
+      button {
+        width: 100%;
+        padding: 10px;
+        margin-top: 8px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 14px;
+        box-sizing: border-box;
+      }
+
+      button {
+        background-color: #004668;
+        color: white;
+        font-weight: bold;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      button:hover {
+        background-color: #00334c; /* Slightly darker for hover effect */
+      }
+
+      #result {
+        text-align: center;
+        font-weight: bold;
+        margin-top: 20px;
+      }
+
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Welcome to Phoenix - Your Personalized Placement Assistant</h1>
+      <form id="placement-form">
+        <label for="name">Name:</label>
+        <input placeholder="Enter your name" type="text" id="name" name="name" required />
+
+        <label for="email">Email:</label>
+        <input placeholder="Enter your mail-id" type="email" id="email" name="email" required />
+
+        <label for="password">Password:</label>
+        <input placeholder="Enter your password" type="password" id="password" name="password" required />
+
+        <label for="password">Re-type Password:</label>
+        <input placeholder="Re-enter your password" type="password" id="password" name="password" required />
+
+        <label for="aspiration">Placement Aspiration:</label>
+        <select id="aspiration" name="aspiration" required>
+          <option value="front_end">Front End Development</option>
+          <option value="back_end">Back End Developer</option>
+          <option value="software_engineering">Software Engineering</option>
+        </select>
+
+        <label for="knowledge">How much do you know about this field?</label><br>
+        <select id="knowledge" name="knowledge" required>
+            <option value="beginner">Beginner</option>
+            <option value="basics">I know the basics</option>
+            <option value="course_completed">I have done a full course</option>
+        </select><br><br>
+
+        <label for="learning_style">Preferred Learning Style:</label><br>
+        <select id="learning_style" name="learning_style" required>
+            <option value="video_tutorials">Video Tutorials</option>
+            <option value="hands_on">Hands-on Projects</option>
+            <option value="reading_materials">Reading Materials</option>
+        </select><br><br>
+
+        <label for="time_availability">How many hours per week can you dedicate?</label><br>
+        <input type="number" id="time_availability" name="time_availability" min="1" max="40" required><br><br>
+
+        <button type="submit">Log In</button>
+      </form>
+
+      <h2 id="result"></h2>
+    </div>
+
+    <script>
+      document
+        .getElementById("placement-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault(); // Prevent default form submission
+
+          // Save login status to localStorage
+          localStorage.setItem("isLoggedIn", "true");
+
+          // Redirect to the homepage after login
+          window.location.href = "/welcome"; // Redirect to the homepage
+        });
+    </script>
+  </body>
+</html>
