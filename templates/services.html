@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Services</title>
+    <link rel="stylesheet" href="../static/css/style.css" />
+  </head>
+  <body>
+    <header>
+      <h2 class="logo">Pheonix</h2>
+      <nav class="navigation">
+        <a href="/welcome">HOME</a>
+        <a href="#">ABOUT</a>
+        <a href="/services" class="active">SERVICES</a>
+        <a href="#">CONTACT</a>
+      </nav>
+    </header>
+
+    <div class="container">
+      <div class="box">
+        <img href="/"
+          src="../static/images/programming-coding-website-development-web-design_250257-946.jpg.avif"
+          alt="Programming Illustration"
+        />
+        <h3>Mock Tests</h3>
+      </div>
+      <div class="box">
+        <img
+          src="../static/images/117-coding-programming-interview-questions-answers-2022-prep-guide.png"
+          alt="Interview Prep"
+        />
+        <h3>Interview Prep</h3>
+      </div>
+      <div class="box">
+        <img src="../static/images/istockphoto-691423398-612x612.jpg" alt="Roadmap" />
+        <h3>Roadmap</h3>
+      </div>
+    </div>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-color:  rgb(23, 230, 133, 0.9);
+      }
+
+      .container {
+        display: flex;
+        gap: 20px;
+        padding: 20px;
+        max-width: 1200px; /* Increased max-width for more room */
+        width: 100%;
+        flex-wrap: nowrap; /* Prevent wrapping, all boxes stay on one line */
+      }
+
+      .box {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center; /* Center content horizontally */
+        text-align: center;
+        border: 2px solid rgba(0, 0, 0, 0.8);
+        border-radius: 10px;
+        background-color: #fff;
+        padding: 15px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        width: 30%; /* Make boxes take up 30% of container width */
+        height: 350px; /* Adjust height to maintain rectangular shape */
+        /* border: #333; */
+        background-color: #ffff;
+        transition: background-color 0.5s;
+      }
+
+      .box:hover {
+        background-color: rgba(3, 73, 40, 0.5);
+      }
+
+      .box img {
+        width: 100%;
+        max-width: 250px;
+        height: auto;
+        margin-bottom: 15px;
+        border-radius: 8px;
+      }
+
+      .box h3 {
+        font-size: 1.2em;
+        color: #333;
+        margin-top: auto;
+      }
+    </style>
+    <script src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"></script>
+    <script src="https://files.bpcontent.cloud/2025/01/09/08/20250109085931-RI5O5JHQ.js"></script>
+  </body>
+</html>
