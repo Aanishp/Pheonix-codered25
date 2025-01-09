@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us</title>
+    <title>Read More - Phoenix</title>
     <link rel="stylesheet" href="../static/css/style.css" />
     <style>
-        body {
+        style>body {
             font-family: Arial, sans-serif;
             line-height: 1.6;
             margin: 0;
@@ -15,28 +16,69 @@
             color: #333;
         }
 
-        .main-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            padding: 20px;
-            gap: 20px;
+        /* header {
+        background-color: #4CAF50;
+        color: white;
+        padding: 1rem;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    } */
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
         }
 
+        /* .navigation {
+        display: flex;
+        gap: 1rem;
+    }
+
+    .navigation a {
+        color: white;
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        transition: background-color 0.3s;
+    }
+
+    .navigation a:hover,
+    .navigation a.active {
+        background-color: #45a049;
+    } */
+
         .container {
-            width: 70%;
+            display: flex;
+            width: 100%;
+            min-height: 100vh;
+            /* Ensure the container takes full height */
+            margin: 0;
+            padding: 80px 20px 20px;
+            /* Add top padding to account for navbar height */
+        }
+
+        .content {
+            flex: 3;
+            /* Take up 3/4 of the width */
             padding: 20px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+            /* Allow scrolling if content overflows */
         }
 
         .image-container {
-            width: 25%;
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 15px;
-            align-items: start;
+            flex: 1;
+            /* Take up 1/4 of the width */
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            padding: 20px;
         }
 
         .image-container img {
@@ -44,15 +86,12 @@
             height: auto;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
+            margin-bottom: 10px;
         }
 
-        .image-container img:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-        }
-
-        h1, h2, h3 {
+        h1,
+        h2,
+        h3 {
             color: #4CAF50;
         }
 
@@ -78,79 +117,138 @@
         .cta a:hover {
             background: #45a049;
         }
+
+        .pyramid {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            margin: 30px 0;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .pyramid-level {
+            width: 80%;
+            max-width: 400px;
+            background: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .pyramid-level:not(:first-child)::after {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+            border-bottom: 15px solid #4CAF50;
+        }
+
+        .pyramid-level span {
+            font-weight: bold;
+        }
+
+        .pyramid-level:first-child {
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
     </style>
 </head>
+
 <body>
     <header>
         <h2 class="logo">Pheonix</h2>
         <nav class="navigation">
-          <a href="/welcome">HOME</a>
-          <a href="/about" class="active">ABOUT</a>
-          <a href="/services">SERVICES</a>
-          <a href="/contact">CONTACT</a>
+            <a href="/welcome">HOME</a>
+            <a href="/about" class="active">ABOUT</a>
+            <a href="/services">SERVICES</a>
+            <a href="/contact">CONTACT</a>
         </nav>
-      </header>
-    <div class="main-content">
-        <div class="container">
+    </header>
+    <div class="container">
+        <div class="content">
             <h2>What We Provide</h2>
-            <p>At Phoenix, we aim to revolutionize the way students prepare for placements by offering a comprehensive and personalized experience. Here's what we offer:</p>
+            <p>At Phoenix, we aim to revolutionize the way students prepare for placements by offering a comprehensive
+                and personalized experience. Here's what we offer:</p>
             <ul>
-                <li><strong>Personalized Roadmaps:</strong> Customized learning paths based on your skills, aspirations, and current knowledge level.</li>
-                <li><strong>Hands-On Projects:</strong> Work on real-world projects tailored to your skill level and career goals, boosting your resume and providing practical experience.</li>
-                <li><strong>Skill Assessments:</strong> Evaluate your technical and soft skills to identify areas of improvement.</li>
-                <li><strong>Profile Enhancement:</strong> Get suggestions on how to enhance your online professional presence, including LinkedIn and GitHub profiles.</li>
-                <li><strong>Mock Interviews:</strong> Practice with AI-driven mock interviews tailored to your preferred domain.</li>
+                <li><strong>Personalized Roadmaps:</strong> Customized learning paths based on your skills, aspirations,
+                    and current knowledge level.</li>
+                <li><strong>Hands-On Projects:</strong> Work on real-world projects tailored to your skill level and
+                    career goals, boosting your resume and providing practical experience.</li>
+                <li><strong>Skill Assessments:</strong> Evaluate your technical and soft skills to identify areas of
+                    improvement.</li>
+                <li><strong>Profile Enhancement:</strong> Get suggestions on how to enhance your online professional
+                    presence, including LinkedIn and GitHub profiles.</li>
+                <li><strong>Mock Interviews:</strong> Practice with AI-driven mock interviews tailored to your preferred
+                    domain.</li>
             </ul>
 
-            <h2>How It Helps Students</h2>
-            <p>Phoenix is designed to bridge the gap between academic knowledge and industry expectations. Here's how it benefits students:</p>
-            <ul>
-                <li>Provides a clear and structured learning path tailored to individual goals.</li>
-                <li>Offers hands-on experience through industry-relevant projects.</li>
-                <li>Enhances confidence with practice interviews and skill evaluations.</li>
-                <li>Improves employability by focusing on in-demand skills and personal branding.</li>
-            </ul>
+            <h2>Our Process</h2>
+            <div class="pyramid">
+                <div class="pyramid-level"><span>Goal Achievement</span></div>
+                <div class="pyramid-level"><span>Placement Preparation</span></div>
+                <div class="pyramid-level"><span>Progress Tracking</span></div>
+                <div class="pyramid-level"><span>Hands-on Projects</span></div>
+                <div class="pyramid-level"><span>Learning Path</span></div>
+                <div class="pyramid-level"><span>AI Evaluation</span></div>
+                <div class="pyramid-level"><span>Profile Setup</span></div>
+                <div class="pyramid-level"><span>User Signup/Login</span></div>
+                <div class="pyramid-level"><span>Start</span></div>
+            </div>
 
             <h2>Why Phoenix is Better Than Traditional Placement Methods</h2>
-            <p>Traditional placement training often follows a one-size-fits-all approach. Phoenix stands out by offering:</p>
+            <p>Traditional placement training often follows a one-size-fits-all approach. Phoenix stands out by
+                offering:</p>
             <ul>
-                <li><strong>Personalization:</strong> Every aspect of our platform is tailored to your unique needs and aspirations.</li>
-                <li><strong>Real-World Experience:</strong> Focus on practical skills with projects that simulate actual industry scenarios.</li>
-                <li><strong>Comprehensive Guidance:</strong> Beyond technical skills, we help you build a strong professional profile and improve soft skills.</li>
-                <li><strong>Accessibility:</strong> Learn at your own pace with 24/7 access to resources and guidance.</li>
-                <li><strong>AI-Powered Insights:</strong> Leverage AI to identify strengths, weaknesses, and areas for growth.</li>
+                <li><strong>Personalization:</strong> Every aspect of our platform is tailored to your unique needs and
+                    aspirations.</li>
+                <li><strong>Real-World Experience:</strong> Focus on practical skills with projects that simulate actual
+                    industry scenarios.</li>
+                <li><strong>Comprehensive Guidance:</strong> Beyond technical skills, we help you build a strong
+                    professional profile and improve soft skills.</li>
+                <li><strong>Accessibility:</strong> Learn at your own pace with 24/7 access to resources and guidance.
+                </li>
+                <li><strong>AI-Powered Insights:</strong> Leverage AI to identify strengths, weaknesses, and areas for
+                    growth.</li>
             </ul>
 
             <h2>Start Your Journey with Phoenix</h2>
-            <p>Phoenix is your trusted partner in building a successful career. Whether you're a beginner or an advanced learner, we provide the tools and guidance you need to achieve your goals.</p>
+            <p>Phoenix is your trusted partner in building a successful career. Whether you're a beginner or an advanced
+                learner, we provide the tools and guidance you need to achieve your goals.</p>
 
             <div class="cta">
-                <a href="index.html">Go Back to Home</a>
+                <a href="/welcome">Go Back to Home</a>
             </div>
         </div>
+
         <div class="image-container">
-            <img src="../static/images/placement.jpg" alt="Placement Preparation">
-            <img src="../static/images/TPO.jpg" alt="Training Program Officer">
-            <img src="../static/images/WhatsApp Image 2025-01-10 at 03.33.28.jpeg" alt="Phoenix Initiative">
-            <img src="../static/images/placements.jpg" alt="Placements Overview">
-            <img src="../static/images/placement-training.png" alt="Placement Training">
+            <img src="../static/images/placement.jpg" alt="Image 1">
+            <img src="../static/images/placements.jpg" alt="Image 2">
+            <img src="../static/images/placement-training.png" alt="Image 3">
+            <img src="../static/images/TPO.jpg" alt="Image 4">
         </div>
     </div>
     <script src="../static/js/script.js"></script>
-    <script
-      type="module"
-      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
-    ></script>
-    <script
-      nomodule
-      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
-    ></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"></script>
     <script src="https://files.bpcontent.cloud/2025/01/09/08/20250109085931-RI5O5JHQ.js"></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>

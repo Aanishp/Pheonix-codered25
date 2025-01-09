@@ -42,4 +42,8 @@ def dev_Ops_page():
 def about_page():
     return render_template('about.html')
 
+@app.route('/sign-up')
+def sign_page():
+    return render_template('sign-up.html')
+
 app.run(debug=True)
