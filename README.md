@@ -38,7 +38,7 @@ Install the requirements
 
 Run the application:
 - Copy code
-  - python app.py
+  - python main.py
 
 Open your browser and navigate to:
 - Copy code
