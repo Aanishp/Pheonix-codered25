@@ -212,10 +212,16 @@ def back_end_mock_page():
     return render_template('back-end-mock.html', questions = questions)
 
 @app.route('/cybersecurity-mock')
-def back_end_mock_page():
+def cybersecurity_mock_page():
     global questions 
     questions = questions_cyber
     return render_template('cybersecurity-mock.html', questions = questions)
+
+@app.route('/Dev-Ops-mock')
+def Dev_Ops_mock_page():
+    global questions 
+    questions = questions_dev_ops
+    return render_template('Dev-Ops-mock.html', questions = questions)
 
 @app.route('/submit', methods=['POST'])
 def submit():
