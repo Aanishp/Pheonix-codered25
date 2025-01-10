@@ -5,10 +5,9 @@
 - Features
 - Tech Stack
 - Installation
-- Usage
 
 ## Overview
-This project is a web-based mock test application built using Flask. It allows users to take mock tests in various domains like Front-End Development, Back-End Development, Cybersecurity, and DevOps. The application dynamically evaluates the user’s answers and provides a score.
+Phoenix is an innovative platform designed to provide students with tailored guidance for career development. By integrating malpractice detection, domain-specific roadmaps, and an AI assistant, Phoenix ensures a fair, personalized, and effective learning experience. It empowers students to prepare for placements through a combination of hands-on projects, AI-driven insights, and secure assessment processes.
 
 ## Features
 - Home, Welcome, Services, and About pages.
@@ -21,6 +20,10 @@ This project is a web-based mock test application built using Flask. It allows u
 - Automatic score calculation.
 - User-friendly and intuitive interface.
 - Modular structure for scalability.
+- Roadmap for multiple domains.
+- Project idea to build resume.
+- AI based chat bot to clear doubts.
+- Mal practice detection in mock test.
 
 ## Tech Stack
 - Frontend: HTML, CSS, JS
@@ -45,8 +48,3 @@ Open your browser and navigate to:
   - http://127.0.0.1:5000/
 
 Note: Use Anaconda for best results 
-
-## Usage
-- Select a mock test from the available domains.
-- Answer the questions provided.
-- Submit your answers to receive a score.
