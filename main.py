@@ -178,6 +178,10 @@ def workout_tracker_page():
 def image_processing_service_page():
     return render_template('image-processing-service.html')
 
+@app.route('/mock-tests')
+def mock_tests_page():
+    return render_template('mock-tests.html')
+
 # @app.route('/image-processing-service')
 # def image_processing_service_page():
 #     return render_template('image-processing-service.html')
@@ -195,9 +199,23 @@ def image_processing_service_page():
 #     {"id": 9, "question": "Describe how Flexbox works in CSS and provide examples of its key properties.", "expected_answer": "Flexbox is a CSS layout model that provides an efficient way to align and distribute space among items in a container, even when their sizes are dynamic.", "marks": 5}
 # ]
 
-@app.route('/quiz')
-def quiz_page():
-    return render_template('qu.html', questions=questions)
+@app.route('/front-end-mock')
+def front_end_mock_page():
+    global questions 
+    questions = questions_front_end
+    return render_template('front-end-mock.html', questions = questions)
+
+@app.route('/back-end-mock')
+def back_end_mock_page():
+    global questions 
+    questions = questions_back_end
+    return render_template('back-end-mock.html', questions = questions)
+
+@app.route('/cybersecurity-mock')
+def back_end_mock_page():
+    global questions 
+    questions = questions_cyber
+    return render_template('cybersecurity-mock.html', questions = questions)
 
 @app.route('/submit', methods=['POST'])
 def submit():
@@ -205,16 +223,26 @@ def submit():
     score = 0
     total_marks = sum(q['marks'] for q in questions)
 
+    # Iterate through questions to calculate the score
     for question in questions:
-        if str(question['id']) in responses:
-            if question.get('answer') and responses[str(question['id'])] == question['answer']:
-                score += question['marks']
-            elif question.get('expected_answer'):
-                user_answer = responses[str(question['id'])].strip()
-                if len(user_answer) > 20:  # Example check
-                    score += question['marks']
+        question_id = str(question['id'])  # Ensure IDs are strings
+        if question_id in responses:  # Check if the user responded
+            user_answer = responses[question_id].strip()
+            if 'answer' in question and user_answer == question['answer']:
+                score += question['marks']  # Add marks for correct answers
+            elif 'expected_answer' in question:
+                # Example check for descriptive answers (simple check)
+                if question['expected_answer'].lower() in user_answer.lower():
+                    score += question['marks']  # Add marks for matching descriptive answers
 
-    return render_template('test.html', questions=questions, score=score, total_marks=total_marks)
+    # Pass the score and total_marks to the results page
+    return render_template("results.html", score=score, total_marks=total_marks)
+
+@app.route('/results')
+def show_results():
+    # This route can be used for redirection if needed.
+    return redirect(url_for('index'))
+
 
 # Run the application
 if __name__ == '__main__':

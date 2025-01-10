@@ -1,0 +1,182 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frontend Assessment Test</title>
+</head>
+<body>
+    <h1>Frontend Assessment Test</h1>
+    <form action="/submit" method="POST">
+        {% for question in questions %}
+        <div class="question">
+            <p>{{ question['id'] }}. {{ question['question'] }} <span>({{ question['marks'] }} Marks)</span></p>
+            {% if question['options'] %}
+            <div class="options">
+                {% for option in question['options'] %}
+                <input type="radio" name="{{ question['id'] }}" value="{{ option }}"> {{ option }}<br>
+                {% endfor %}
+            </div>
+            {% else %}
+            <textarea name="{{ question['id'] }}" placeholder="Write your answer here..."></textarea>
+            {% endif %}
+        </div>
+        {% endfor %}
+        <button type="submit">Submit Test</button>
+    </form>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backend Assessment Test</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #00c6ff, #0072ff);
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            background: #fff;
+            color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            margin: 30px auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #0072ff;
+        }
+
+        .question p {
+            font-size: 1.1em;
+        }
+
+        .options {
+            margin-top: 10px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 100px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        button {
+            background: #0072ff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background: #005bb5;
+        }
+
+        #timer {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #ff0000;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        #webcam-feed {
+            width: 100%;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Backedn Assessment Test</h1>
+        <div id="timer">Time Left: 30:00</div>
+        <video id="webcam-feed" autoplay muted></video>
+        <form id="testForm" action="/submit" method="POST">
+            {% for question in questions %}
+            <div class="question">
+                <p>
+                    {{ question['id'] }}. {{ question['question'] }}
+                    <span>({{ question['marks'] }} Marks)</span>
+                </p>
+                {% if question['options'] %}
+                <div class="options">
+                    {% for option in question['options'] %}
+                    <div>
+                        <input type="radio" name="{{ question['id'] }}" value="{{ option }}"> {{ option }}
+                    </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <textarea name="{{ question['id'] }}" placeholder="Write your answer here..."></textarea>
+                {% endif %}
+            </div>
+            {% endfor %}
+            <button type="submit">Submit Test</button>
+        </form>
+    </div>
+
+    <script>
+        // Timer Implementation
+        let timer = 30 * 60; // 30 minutes
+        const timerElement = document.getElementById("timer");
+        const countdown = setInterval(() => {
+            const minutes = Math.floor(timer / 60);
+            const seconds = timer % 60;
+            timerElement.textContent = `Time Left: ${minutes}:${seconds.toString().padStart(2, '0')}`;
+            if (--timer < 0) {
+                clearInterval(countdown);
+                alert("Time's up! Submitting your test.");
+                document.getElementById('testForm').submit();
+            }
+        }, 1000);
+
+        // Webcam Setup
+        const videoElement = document.getElementById("webcam-feed");
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then((stream) => {
+                videoElement.srcObject = stream;
+                videoElement.play();
+            })
+            .catch((error) => {
+                alert("Please enable webcam access to proceed.");
+            });
+
+        // Malpractice Detection: Focus Loss
+        document.addEventListener("visibilitychange", () => {
+            if (document.hidden) {
+                alert("Malpractice detected: Switching tabs or minimizing the window is not allowed!");
+            }
+        });
+
+        // Fullscreen Mode
+        window.onload = () => {
+            document.documentElement.requestFullscreen().catch((err) => {
+                alert("Fullscreen mode is required for this test.");
+            });
+        };
+    </script>
+</body>
+
+</html>
+
