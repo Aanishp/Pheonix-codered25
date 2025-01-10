@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frontend Assessment Test</title>
+</head>
+<body>
+    <h1>Frontend Assessment Test</h1>
+    <form action="/submit" method="POST">
+        {% for question in questions %}
+        <div class="question">
+            <p>{{ question['id'] }}. {{ question['question'] }} <span>({{ question['marks'] }} Marks)</span></p>
+            {% if question['options'] %}
+            <div class="options">
+                {% for option in question['options'] %}
+                <input type="radio" name="{{ question['id'] }}" value="{{ option }}"> {{ option }}<br>
+                {% endfor %}
+            </div>
+            {% else %}
+            <textarea name="{{ question['id'] }}" placeholder="Write your answer here..."></textarea>
+            {% endif %}
+        </div>
+        {% endfor %}
+        <button type="submit">Submit Test</button>
+    </form>
+</body>
+</html>

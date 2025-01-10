@@ -46,4 +46,8 @@ def about_page():
 def sign_page():
     return render_template('sign-up.html')
 
+@app.route('/contact')
+def contact_page():
+    return render_template('contact.html')
+
 app.run(debug=True)
