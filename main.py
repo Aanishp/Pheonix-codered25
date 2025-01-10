@@ -50,4 +50,8 @@ def sign_page():
 def contact_page():
     return render_template('contact.html')
 
+@app.route('/project-ideas')
+def project_ideas_page():
+    return render_template('preject_ideas.html')
+
 app.run(debug=True)
